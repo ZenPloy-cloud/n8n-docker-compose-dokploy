@@ -12,6 +12,8 @@ A simple and efficient setup with a single n8n instance connected to a PostgreSQ
 
 ![Standard Mode Deployment](https://i.ibb.co/Wv474sYq/zenploy-dokploy-docker-compose.png)
 
+![Environment Settings](https://i.ibb.co/N6QZg9sH/zenploy-dokploy-environment-settings.png)
+
 **[>> Go to Standard Mode instructions](./standard/)**
 
 ### 2. Queue Mode (Recommended for High Volume)
