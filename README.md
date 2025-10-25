@@ -28,17 +28,17 @@ A simple and efficient setup with a single n8n instance connected to a PostgreSQ
 #### Step 6: Deploy the Application
 ![Deploy](./assets/dokploy-deploy-zenploy.png)
 
-#### Step 7: Configure Domain
-![Domain Configuration](./assets/dokploy-domains-zenploy.png)
-
-#### Step 8: Check Deployment Details
+#### Step 7: Check Deployment Details
 ![Deployment Details](./assets/dokploy-deployment-details-zenploy.png)
+
+#### Step 8: Configure Domain
+![Domain Configuration](./assets/dokploy-domains-zenploy.png)
 
 #### Step 9: Deploy Again (After Configuration)
 ![Deploy](./assets/dokploy-deploy-zenploy.png)
 
 #### Step 10: Set Up n8n Owner Account
-![Set Up Owner Account](./n8n-set-up-owner-account.png)
+![Set Up Owner Account](./assets/n8n-set-up-owner-account.png)
 
 **[>> Go to Standard Mode instructions](./standard/)**
 
