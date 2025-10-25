@@ -25,11 +25,11 @@ A simple and efficient setup with a single n8n instance connected to a PostgreSQ
 #### Step 5: Set Environment Variables
 ![Environment Settings](./assets/dokploy-environment-settings-zenploy.png)
 
-#### Step 6: Configure Domain
-![Domain Configuration](./assets/dokploy-domains-zenploy.png)
-
-#### Step 7: Deploy the Application
+#### Step 6: Deploy the Application
 ![Deploy](./assets/dokploy-deploy-zenploy.png)
+
+#### Step 7: Configure Domain
+![Domain Configuration](./assets/dokploy-domains-zenploy.png)
 
 #### Step 8: Check Deployment Details
 ![Deployment Details](./assets/dokploy-deployment-details-zenploy.png)
