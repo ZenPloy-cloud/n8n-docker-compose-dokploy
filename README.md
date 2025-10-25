@@ -1,5 +1,3 @@
-# n8n-docker-compose-dokploy-
-Your one-click solution to self-host n8n, the powerful workflow automation platform. This repository provides a Docker Compose file for quick deployment on your server with Dokploy.
 # n8n Production Stack for Docker & Dokploy
 
 This repository provides production-ready Docker Compose configurations to self-host the n8n automation platform. It is designed for easy deployment using Dokploy or any standard Docker environment.
