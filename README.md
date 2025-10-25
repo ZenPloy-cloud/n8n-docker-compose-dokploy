@@ -10,9 +10,9 @@ This repository offers two deployment modes. Choose the one that best fits your 
 
 A simple and efficient setup with a single n8n instance connected to a PostgreSQL database. Perfect for most use cases and easy to manage.
 
-<img src="https://i.ibb.co/Wv474sYq/zenploy-dokploy-docker-compose.png" alt="Standard Mode Deployment" width="100%">
+![Standard Mode Deployment](./assets/zenploy-dokploy-docker-compose.png)
 
-<img src="https://i.ibb.co/N6QZg9sH/zenploy-dokploy-environment-settings.png" alt="Environment Settings" width="100%">
+![Environment Settings](./assets/zenploy-dokploy-environment-settings.png)
 
 **[>> Go to Standard Mode instructions](./standard/)**
 
