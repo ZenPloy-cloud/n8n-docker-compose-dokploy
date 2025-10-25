@@ -25,16 +25,3 @@ A simple and efficient setup with a single n8n instance connected to a PostgreSQ
 A scalable setup using Redis to manage a queue of executions, which are processed by dedicated worker services. This mode is ideal for high-volume workflows or to ensure the main n8n instance remains responsive.
 
 **[>> Go to Queue Mode instructions](./queue/)**
-
-## General Instructions
-
-1.  Clone this repository:
-    ```bash
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
-    ```
-2.  Navigate to the chosen mode's directory (e.g., `cd standard`).
-3.  Follow the instructions in the `README.md` file of that directory.
-
-## Contributing
-...
