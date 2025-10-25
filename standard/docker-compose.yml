@@ -76,7 +76,6 @@ services:
       - EXECUTIONS_DATA_MAX_AGE=168             # Maximum age (in hours) of execution data to keep (here, 7 days).
       - N8N_PERSONALIZATION_ENABLED=false       # Disables the collection of personalization data.
       - N8N_TEMPLATES_ENABLED=true              # Enables access to workflow templates.
-      - N8N_RUNNERS_ENABLED=true                # Enables the "runners" feature for parallel executions.
       - N8N_BLOCK_ENV_ACCESS_IN_NODE=false      # Allows access to environment variables in code nodes (use with caution).
       - N8N_GIT_NODE_DISABLE_BARE_REPOS=true    # Security setting for the Git node.
 
