@@ -16,6 +16,8 @@ A simple and efficient setup with a single n8n instance connected to a PostgreSQ
 
 ![Domain Configuration](./assets/zenploy-dokploy-domains.png)
 
+![Deploy](./assets/zenploy-dokploy-deploy.png)
+
 **[>> Go to Standard Mode instructions](./standard/)**
 
 ### 2. Queue Mode (Recommended for High Volume)
