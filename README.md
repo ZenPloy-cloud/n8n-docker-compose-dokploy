@@ -10,6 +10,8 @@ This repository offers two deployment modes. Choose the one that best fits your 
 
 A simple and efficient setup with a single n8n instance connected to a PostgreSQL database. Perfect for most use cases and easy to manage.
 
+![Standard Mode Deployment](https://i.ibb.co/Wv474sYq/zenploy-dokploy-docker-compose.png)
+
 **[>> Go to Standard Mode instructions](./standard/)**
 
 ### 2. Queue Mode (Recommended for High Volume)
