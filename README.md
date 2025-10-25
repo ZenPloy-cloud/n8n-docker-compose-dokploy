@@ -16,25 +16,25 @@ Follow these steps to deploy n8n on Dokploy:
 
 ### Step 1: Create a New Project
 
-Start by creating a new project in Dokploy to organize your n8n deployment.
+Click on the "Create Project" button, give your project a name (e.g., "n8n-production"), and click "Create" to organize your n8n deployment.
 
 ![Create Project](./assets/dokploy-creat-project-zenploy.png)
 
 ### Step 2: Create a New Service
 
-Add a new service to your project. This will be your n8n instance.
+Click on "Create Service" to add a new service to your project. Select "Template" from the list of options.
 
 ![Create Service](./assets/dokploy-creat-service-zenploy.png)
 
 ### Step 3: Select n8n Template
 
-Choose the n8n template from the available options to get started quickly.
+In the template list, select the "n8n with Postgres" template (the second option) to get started with a pre-configured setup including PostgreSQL database.
 
 ![Select n8n Template](./assets/dokploy-n8n-templatect-zenploy.png)
 
 ### Step 4: Configure Docker Compose
 
-Copy the contents of `n8n-standard-with-postgres/docker-compose.yml` from this repository and paste it into the Docker Compose configuration field.
+Copy the contents of `n8n-standard-with-postgres/docker-compose.yml` from this repository and paste it into the Docker Compose configuration field. Click the "Save" button at the bottom to save your configuration.
 
 ![Deploy Docker Compose](./assets/dokploy-deploy-docker-compose-zenploy.png)
 
@@ -51,11 +51,13 @@ Configure the required environment variables. Use the template from `n8n-standar
 - `POSTGRES_PASSWORD`: Generate with `openssl rand -base64 64`
 - `POSTGRES_DB`: Database name (e.g., n8n)
 
+After entering all variables, click the "Save" button to save your configuration.
+
 ![Environment Settings](./assets/dokploy-environment-settings-zenploy.png)
 
 ### Step 6: Deploy the Application
 
-Click the deploy button to start the initial deployment.
+Go back to the "General" tab and click the "Deploy" button to start the initial deployment.
 
 ![Deploy](./assets/dokploy-deploy-zenploy.png)
 
@@ -67,7 +69,7 @@ Monitor the deployment logs to ensure everything is running correctly.
 
 ### Step 8: Configure Domain
 
-Set up your domain name and SSL certificate for secure access.
+Go to the "Domains" tab and modify the default domain name to match your `N8N_HOST` value. SSL certificate will be automatically configured for secure access.
 
 ![Domain Configuration](./assets/dokploy-domains-zenploy.png)
 
