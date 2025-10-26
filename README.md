@@ -138,60 +138,53 @@ Execution data older than 7 days (168 hours) is automatically pruned to save sto
 
 ---
 
-## 🚀 Queue Mode Deployment (Advanced)
+## 🚀 Queue Mode (For High-Volume Workflows)
 
-Queue mode provides horizontal scalability for high-volume workflow executions using Redis as a message broker and multiple worker instances.
+Need to run hundreds of workflows simultaneously? Queue mode is for you.
 
-### When to Use Queue Mode
+### 💡 Do You Need Queue Mode?
 
-Use queue mode when you need:
-- **High throughput**: Process hundreds or thousands of workflows simultaneously
-- **Horizontal scaling**: Add/remove workers based on workload
-- **Better resource isolation**: Separate UI/webhooks from workflow execution
-- **Improved reliability**: Workers can be restarted without affecting the main instance
+**Choose Queue Mode if:**
+- ✅ You run 100+ workflows per hour
+- ✅ Your workflows are getting delayed or timing out
+- ✅ You need to scale up during peak hours
+- ✅ You want to separate your UI from workflow execution
 
-### Architecture Overview
+**Stick with Standard Mode if:**
+- ❌ You run less than 50 workflows per hour
+- ❌ You're just getting started with n8n
+- ❌ You want the simplest setup possible
+
+### 🏗️ How It Works
+
+Think of it like a restaurant kitchen:
 
 ```
 ┌─────────────┐     ┌─────────┐     ┌──────────┐
-│   n8n Main  │────▶│  Redis  │────▶│ Worker 1 │
-│ (UI/Webhooks)│     │ (Queue) │     └──────────┘
+│   n8n Main  │────▶│  Redis  │────▶│ Worker 1 │ 👨‍🍳
+│  (Waiter)   │     │ (Orders)│     └──────────┘
 └─────────────┘     └─────────┘     ┌──────────┐
-                                    │ Worker 2 │
+                                    │ Worker 2 │ 👨‍🍳
                                     └──────────┘
 ```
 
-### Quick Start with Queue Mode
+- **Main instance** = Waiter (takes orders, serves customers)
+- **Redis** = Order tickets (queues up the work)
+- **Workers** = Chefs (do the actual cooking)
 
-Follow the same steps as Standard Mode, but use the Queue Mode configuration files:
+### 🎯 Deploy Queue Mode in Dokploy
 
-1. **Use Queue Mode Docker Compose**: [`n8n-queue-mode-redis/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-queue-mode-redis/docker-compose.yml)
-2. **Use Queue Mode Environment**: [`n8n-queue-mode-redis/dockploy-environment-settings.env`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-queue-mode-redis/dockploy-environment-settings.env)
+**Step 1:** Follow the same deployment steps as Standard Mode (Steps 1-10 above)
 
-### Queue Mode Configuration
+**Step 2:** Use these files instead:
+- 📄 Docker Compose: [`n8n-queue-mode-redis/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-queue-mode-redis/docker-compose.yml)
+- ⚙️ Environment: [`n8n-queue-mode-redis/dockploy-environment-settings.env`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-queue-mode-redis/dockploy-environment-settings.env)
 
-The queue mode setup includes:
-
-**Services:**
-- **postgres**: PostgreSQL 17 database
-- **redis**: Redis 8 message broker
-- **n8n-main**: Main instance (UI, webhooks, triggers)
-- **n8n-worker-1**: Worker instance (executes workflows)
-- **n8n-worker-2**: Optional second worker (commented out by default)
-
-**Key Environment Variables:**
-```bash
-# Enable queue mode
-EXECUTIONS_MODE=queue
-
-# Redis configuration
-QUEUE_BULL_REDIS_HOST=redis
-QUEUE_BULL_REDIS_PORT=6379
-QUEUE_BULL_REDIS_DB=0
-
-# Worker concurrency (workflows per worker)
---concurrency=10
-```
+**That's it!** Your queue mode setup includes:
+- 🗄️ PostgreSQL (database)
+- 🔴 Redis (message queue)
+- 🖥️ n8n Main (UI & webhooks)
+- ⚙️ 1 Worker (processes workflows)
 
 ### Scaling Your Automation
 
