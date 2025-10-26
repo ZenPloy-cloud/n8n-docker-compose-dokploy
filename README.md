@@ -186,14 +186,16 @@ Think of it like a restaurant kitchen:
 - 🖥️ n8n Main (UI & webhooks)
 - ⚙️ 1 Worker (processes workflows)
 
-### Scaling Your Automation
+### 📈 Need More Power? Add Workers!
 
-**Add More Workers**
+Workflows piling up? Just add more workers to handle the load.
 
-When workflows start queuing up, just add more workers to `docker-compose.yml`:
+**How to add a second worker:**
+
+1. Open your `docker-compose.yml` in Dokploy
+2. Copy-paste this at the end of the `services:` section:
 
 ```yaml
-# Add this to your docker-compose.yml services section
 n8n-worker-2:
   image: n8nio/n8n:1.116.2
   restart: unless-stopped
@@ -223,27 +225,34 @@ n8n-worker-2:
     - n8n_data:/home/node/.n8n
 ```
 
-Then deploy to apply changes:
-1. Go to the **General** tab in Dokploy
-2. Click **Deploy** to restart with the new worker
+3. Click **Save**
+4. Go to **General** tab → Click **Deploy**
 
-**Concurrency Recommendations:**
-- Set concurrency to **5-10** per worker
-- Avoid low concurrency with many workers (exhausts database connections)
-- Monitor worker performance and adjust accordingly
+**Pro Tips:**
+- 🎯 Each worker can handle 10 workflows at once (that's the `--concurrency=10`)
+- 🚀 Start with 1-2 workers, add more if needed
+- ⚡ Need a third worker? Copy the code again and rename it to `n8n-worker-3`
 
-### Important Notes
+### ⚠️ Important Things to Know
 
-⚠️ **Encryption Key**: All workers must use the **same** `N8N_ENCRYPTION_KEY` as the main instance to access credentials.
+**Same Encryption Key Everywhere**
+All workers MUST use the same `N8N_ENCRYPTION_KEY`. Otherwise, they can't access your saved credentials. Think of it like a master key that unlocks all your workflow secrets.
 
-⚠️ **Binary Data**: If workflows use binary data, configure S3 external storage instead of filesystem.
+**Binary Files & Queue Mode**
+If your workflows handle files (images, PDFs, etc.), you'll need to set up S3 storage. The default file storage doesn't work well with multiple workers.
 
-### Monitoring Workers
+### 🔍 Monitor Your Workers (Optional)
 
-Workers expose health check endpoints (when `QUEUE_HEALTH_CHECK_ACTIVE` is enabled):
-- `/healthz`: Worker status
-- `/healthz/readiness`: DB and Redis connection status
-- `/metrics`: Performance metrics
+Want to check if your workers are healthy? Enable health checks by adding this to your environment variables:
+
+```bash
+QUEUE_HEALTH_CHECK_ACTIVE=true
+```
+
+Then you can check:
+- `http://your-worker:5678/healthz` - Is the worker running?
+- `http://your-worker:5678/healthz/readiness` - Can it connect to DB and Redis?
+- `http://your-worker:5678/metrics` - Performance stats
 
 ---
 
