@@ -1,16 +1,18 @@
+# ---------------------------------------------------------------
+# N8N Standard
+# ---------------------------------------------------------------
+
 # Docker Compose configuration file for deploying n8n with a PostgreSQL database.
 # This file defines two services: 'postgres' for the database and 'n8n' for the automation application.
 # It also uses Docker volumes to ensure data persistence.
 
 services:
-  # Service for the PostgreSQL database
   postgres:
     # Uses the official PostgreSQL version 17 image, based on Alpine Linux for a smaller size.
     image: postgres:17-alpine
     # Restart policy: the container will restart automatically unless it is manually stopped.
     restart: unless-stopped
     # Environment variables for database configuration.
-    # It is recommended to define these in a .env file at the root of the project for security reasons.
     environment:
       - POSTGRES_USER=${POSTGRES_USER}          # Username for the database.
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}  # Password for the user.
@@ -63,7 +65,7 @@ services:
       - N8N_PORT=${N8N_PORT}                    # Port on which n8n listens.
       - N8N_PROTOCOL=https                      # Protocol to use (http or https).
       - NODE_ENV=production                     # Sets the Node.js execution environment to 'production' for better performance.
-      - WEBHOOK_URL=https://${N8N_HOST}/         # Base URL for webhooks.
+      - WEBHOOK_URL=https://${N8N_HOST}/        # Base URL for webhooks.
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}    # Timezone for workflows (e.g., 'Europe/Paris').
 
       # --- Proxy Configuration ---

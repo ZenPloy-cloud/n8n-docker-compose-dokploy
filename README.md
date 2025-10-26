@@ -48,12 +48,15 @@ In the template list, select the "n8n with Postgres" template (the second option
 Copy the contents of [`n8n-standard-postgres/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/docker-compose.yml) and paste it into the Docker Compose configuration field. Click the "Save" button at the bottom to save your configuration.
 
 ```yaml
+# ---------------------------------------------------------------
+# N8N Standard
+# ---------------------------------------------------------------
+
 # Docker Compose configuration file for deploying n8n with a PostgreSQL database.
 # This file defines two services: 'postgres' for the database and 'n8n' for the automation application.
 # It also uses Docker volumes to ensure data persistence.
 
 services:
-  # Service for the PostgreSQL database
   postgres:
     # Uses the official PostgreSQL version 17 image, based on Alpine Linux for a smaller size.
     image: postgres:17-alpine
