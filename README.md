@@ -27,13 +27,13 @@ Follow these steps to deploy n8n in standard mode with PostgreSQL on Dokploy:
 
 ### Step 1: Create a New Project
 
-Click on the "Create Project" button, give your project a name (e.g., "n8n-production"), and click "Create" to organize your n8n deployment.
+Click on the **Create Project** button, give your project a name (e.g., "n8n-production"), and click **Create** to organize your n8n deployment.
 
 ![Create Project](./assets/dokploy-creat-project-zenploy.png)
 
 ### Step 2: Create a New Service
 
-Click on "Create Service" to add a new service to your project. Select "Template" from the list of options.
+Click on **Create Service** to add a new service to your project. Select **Template** from the list of options.
 
 ![Create Service](./assets/dokploy-creat-service-zenploy.png)
 
@@ -45,7 +45,7 @@ In the template list, select the "n8n with Postgres" template (the second option
 
 ### Step 4: Configure Docker Compose
 
-Copy the contents of [`n8n-standard-postgres/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/docker-compose.yml) and paste it into the Docker Compose configuration field. Click the "Save" button at the bottom to save your configuration.
+Copy the contents of [`n8n-standard-postgres/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/docker-compose.yml) and paste it into the Docker Compose configuration field. Click the **Save** button at the bottom to save your configuration.
 
 ```yaml
 # ---------------------------------------------------------------
@@ -151,7 +151,7 @@ volumes:
 
 ### Step 5: Set Environment Variables
 
-Go to the "Environment" tab and configure the required environment variables. Use the template from [`n8n-standard-postgres/dockploy-environment-settings.env`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/dockploy-environment-settings.env):
+Go to the **Environment** tab and configure the required environment variables. Use the template from [`n8n-standard-postgres/dockploy-environment-settings.env`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/dockploy-environment-settings.env):
 
 ```bash
 # ---------------------------------------------------------------
@@ -190,13 +190,13 @@ POSTGRES_PASSWORD=CHANGEME_SET_A_VERY_SECURE_PASSWORD
 POSTGRES_DB=n8n
 ```
 
-After entering all variables, click the "Save" button to save your configuration.
+After entering all variables, click the **Save** button to save your configuration.
 
 ![Environment Settings](./assets/dokploy-environment-settings-zenploy.png)
 
 ### Step 6: Deploy the Application
 
-Go back to the "General" tab and click the "Deploy" button to start the initial deployment.
+Go back to the **General** tab and click the **Deploy** button to start the initial deployment.
 
 ![Deploy](./assets/dokploy-deploy-zenploy.png)
 
@@ -217,7 +217,7 @@ Monitor the deployment logs to ensure everything is running correctly.
 
 ### Step 9: Deploy Again
 
-After updating the domain, click Deploy one more time to apply the changes.
+After updating the domain, click **Deploy** one more time to apply the changes.
 
 ![Deploy](./assets/dokploy-deploy-zenploy.png)
 
