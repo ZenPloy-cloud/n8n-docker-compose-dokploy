@@ -80,7 +80,7 @@ Monitor the deployment logs to ensure everything is running correctly.
 
 ### Step 8: Configure Domain
 
-Go to the "Domains" tab and modify the default domain name to match your `N8N_HOST` value. SSL certificate will be automatically configured for secure access.
+Go to the "Domains" tab and modify the default domain name to match your `N8N_HOST` value. Enable HTTPS by clicking on the HTTPS toggle and select "Let's Encrypt" for automatic SSL certificate generation. Click the "Update" button to save your domain configuration.
 
 ![Domain Configuration](./assets/dokploy-domains-zenploy.png)
 
