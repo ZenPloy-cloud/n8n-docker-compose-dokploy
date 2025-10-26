@@ -123,47 +123,6 @@ Two Docker volumes ensure data persistence:
 
 Execution data older than 7 days (168 hours) is automatically pruned to save storage space.
 
-## Manual Deployment (Without Dokploy)
-
-If you prefer to deploy without Dokploy:
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/n8n-docker-compose-dokploy.git
-   cd n8n-docker-compose-dokploy/n8n-standard-with-postgres
-   ```
-
-2. Copy and configure the environment file:
-   ```bash
-   cp dockploy-environment-settings.env .env
-   # Edit .env with your values
-   ```
-
-3. Deploy with Docker Compose:
-   ```bash
-   docker compose up -d
-   ```
-
-## Troubleshooting
-
-### Check Logs
-```bash
-docker compose logs -f n8n
-docker compose logs -f postgres
-```
-
-### Restart Services
-```bash
-docker compose restart
-```
-
-### Update n8n Version
-Edit `docker-compose.yml` and change the image version, then:
-```bash
-docker compose pull
-docker compose up -d
-```
-
 ## Support
 
 For issues and questions:
