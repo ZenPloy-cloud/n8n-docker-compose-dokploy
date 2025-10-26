@@ -45,7 +45,104 @@ In the template list, select the "n8n with Postgres" template (the second option
 
 ### Step 4: Configure Docker Compose
 
-Copy the contents of [`n8n-standard-with-postgres/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/docker-compose.yml) from this repository and paste it into the Docker Compose configuration field. Click the "Save" button at the bottom to save your configuration.
+Copy the contents of [`n8n-standard-postgres/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/docker-compose.yml) and paste it into the Docker Compose configuration field. Click the "Save" button at the bottom to save your configuration.
+
+```yaml
+# Docker Compose configuration file for deploying n8n with a PostgreSQL database.
+# This file defines two services: 'postgres' for the database and 'n8n' for the automation application.
+# It also uses Docker volumes to ensure data persistence.
+
+services:
+  # Service for the PostgreSQL database
+  postgres:
+    # Uses the official PostgreSQL version 17 image, based on Alpine Linux for a smaller size.
+    image: postgres:17-alpine
+    # Restart policy: the container will restart automatically unless it is manually stopped.
+    restart: unless-stopped
+    # Environment variables for database configuration.
+    # It is recommended to define these in a .env file at the root of the project for security reasons.
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}          # Username for the database.
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}  # Password for the user.
+      - POSTGRES_DB=${POSTGRES_DB}              # Name of the database to be created.
+    # Volume for PostgreSQL data persistence.
+    # 'postgres_data' is a named volume managed by Docker, mapped to the PostgreSQL data directory in the container.
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    # Healthcheck to ensure the database is ready to accept connections.
+    healthcheck:
+      # Command to check if the PostgreSQL server is ready.
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      # Grace period at container startup before healthcheck failures are counted.
+      start_period: 30s
+      # Interval between each check.
+      interval: 10s
+      # Maximum time allowed for the check command to run.
+      timeout: 5s
+      # Number of unsuccessful attempts before marking the container as 'unhealthy'.
+      retries: 5
+
+  # Service for the n8n application
+  n8n:
+    # Uses a specific version of the n8n image to ensure stability.
+    image: n8nio/n8n:1.116.2
+    # Restart policy: the container will restart automatically unless it is manually stopped.
+    restart: unless-stopped
+    # Makes the startup of n8n dependent on the health status of PostgreSQL.
+    # n8n will only start once the 'postgres' healthcheck is successful.
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # Environment variables for n8n configuration.
+    environment:
+      # --- Database connection configuration ---
+      - DB_TYPE=postgresdb                      # Specifies the type of database to use.
+      - DB_POSTGRESDB_HOST=postgres             # Database host (the name of the 'postgres' service).
+      - DB_POSTGRESDB_PORT=5432                 # Database port.
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DB}   # Database name (must match the one for PostgreSQL).
+      - DB_POSTGRESDB_USER=${POSTGRES_USER}       # Username for the database.
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD} # Password for the database.
+
+      # --- Security & encryption ---
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY} # Secret key to encrypt sensitive data (credentials). It is very important to set and keep this safe.
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true # Enforces strict file permissions for the configuration.
+      - N8N_SECURE_COOKIE=true                  # Uses secure cookies (recommended in production with HTTPS).
+
+      # --- Host & network settings ---
+      - N8N_HOST=${N8N_HOST}                    # Domain name or host on which n8n is accessible.
+      - N8N_PORT=${N8N_PORT}                    # Port on which n8n listens.
+      - N8N_PROTOCOL=https                      # Protocol to use (http or https).
+      - NODE_ENV=production                     # Sets the Node.js execution environment to 'production' for better performance.
+      - WEBHOOK_URL=https://${N8N_HOST}/         # Base URL for webhooks.
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}    # Timezone for workflows (e.g., 'Europe/Paris').
+
+      # --- Proxy Configuration ---
+      # Useful if n8n is behind a reverse proxy (like Nginx or Traefik).
+      - N8N_TRUST_PROXY=true                    # Tells n8n to trust X-Forwarded-* headers.
+      - N8N_PROXY_HOPS=1                        # Number of proxies between the client and the server.
+
+      # --- Performance, cleanup & future compatibility ---
+      - EXECUTIONS_DATA_PRUNE=true              # Enables automatic pruning of past execution data.
+      - EXECUTIONS_DATA_MAX_AGE=168             # Maximum age (in hours) of execution data to keep (here, 7 days).
+      - N8N_PERSONALIZATION_ENABLED=false       # Disables the collection of personalization data.
+      - N8N_TEMPLATES_ENABLED=true              # Enables access to workflow templates.
+      - N8N_RUNNERS_ENABLED=true                # Enables task runners for isolated and secure workflow execution (recommended).
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false      # Allows access to environment variables in code nodes (use with caution).
+      - N8N_GIT_NODE_DISABLE_BARE_REPOS=true    # Security setting for the Git node.
+
+    # Volume for n8n data persistence (workflows, credentials, etc.).
+    # 'n8n_data' is a named volume that will be mapped to the n8n configuration directory.
+    volumes:
+      - n8n_data:/home/node/.n8n
+    # Removed the 'deploy' section as requested to avoid system resource limits.
+    # This makes the setup more flexible, especially for development or non-swarm environments.
+
+# Definition of named volumes to ensure data persistence
+# even if the containers are removed and recreated.
+volumes:
+  n8n_data:
+  postgres_data:
+```
 
 ![Deploy Docker Compose](./assets/dokploy-deploy-docker-compose-zenploy.png)
 
