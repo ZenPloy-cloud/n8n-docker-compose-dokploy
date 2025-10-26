@@ -4,12 +4,21 @@ Production-ready Docker Compose configurations for self-hosting n8n with Postgre
 
 ## ✨ Features
 
+### Standard Mode
 - **PostgreSQL 17**: Rock-solid data persistence for your workflows
 - **Task Runners**: Isolated execution for enhanced security and performance
 - **Production Hardened**: Pre-configured security settings and encryption
 - **Auto Cleanup**: Smart pruning of execution history (7-day retention)
 - **HTTPS Ready**: SSL/TLS support with automatic certificate management
-- **Queue Mode Available**: Scale horizontally with Redis-backed workers
+- **Simple Setup**: Perfect for most use cases with single-instance deployment
+
+### Queue Mode (Advanced)
+- **Redis Message Broker**: Distributed job queue for high-volume processing
+- **Horizontal Scaling**: Add/remove workers dynamically based on workload
+- **Multiple Workers**: Run parallel workflow executions across worker instances
+- **High Availability**: Separate UI/webhooks from workflow execution
+- **Worker Concurrency**: Each worker handles 10 parallel executions by default
+- **Production Grade**: Built for enterprise-level workflow automation
 
 ## 📋 Prerequisites
 
