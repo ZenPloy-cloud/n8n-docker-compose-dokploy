@@ -1,6 +1,11 @@
-# n8n for Dokploy - Standard & Queue Mode
+# n8n for Dokploy ⚡ Standard & Queue Mode
 
 Production-ready Docker Compose configurations for self-hosting n8n with PostgreSQL or Redis queue mode. Deploy in minutes with Dokploy's one-click setup.
+
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![n8n](https://img.shields.io/badge/n8n-Automation%20w/%20Workers-EA4B71?style=for-the-badge&logo=n8n&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-Queue-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 
 ## ✨ Features
 
