@@ -208,19 +208,25 @@ Monitor the deployment logs to ensure everything is running correctly.
 
 ### Step 8: Configure Domain
 
-Go to the "Domains" tab and modify the default domain name to match your `N8N_HOST` value. Enable HTTPS by clicking on the HTTPS toggle and select "Let's Encrypt" for automatic SSL certificate generation. Click the "Update" button to save your domain configuration.
+Go to the Domains tab.
+
+    Modify the default domain to match your N8N_HOST value (e.g., n8n.yourdomain.com).
+
+    Enable HTTPS and select Let's Encrypt for automatic SSL.
+
+    Click Update.
 
 ![Domain Configuration](./assets/dokploy-domains-zenploy.png)
 
 ### Step 9: Deploy Again
 
-After configuring the domain, deploy again to apply the changes.
+After updating the domain, click Deploy one more time to apply the changes.
 
 ![Deploy](./assets/dokploy-deploy-zenploy.png)
 
 ### Step 10: Set Up n8n Owner Account
 
-Access your n8n instance at your configured domain and create the owner account.
+Access your n8n instance at your configured domain and create the owner account. You're all set!
 
 ![Set Up Owner Account](./assets/n8n-set-up-owner-account.png)
 
