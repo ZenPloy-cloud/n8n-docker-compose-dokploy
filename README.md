@@ -11,9 +11,19 @@ Production-ready Docker Compose configurations for self-hosting n8n with Postgre
 - **🌐 HTTPS Ready**: SSL/TLS support with automatic certificate management
 - **📊 Queue Mode Available**: Scale horizontally with Redis-backed workers
 
-## Quick Start with Dokploy
+## 📋 Prerequisites
 
-Follow these steps to deploy n8n on Dokploy:
+Before you begin, make sure you have Dokploy installed on your server:
+
+```bash
+curl -sSL https://dokploy.com/install.sh | sh
+```
+
+For detailed installation instructions, visit the [Dokploy Installation Guide](https://docs.dokploy.com/docs/core/installation).
+
+## 🚀 Quick Start with Dokploy (Standard Mode)
+
+Follow these steps to deploy n8n in standard mode with PostgreSQL on Dokploy:
 
 ### Step 1: Create a New Project
 
