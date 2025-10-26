@@ -27,7 +27,7 @@ Follow these steps to deploy n8n in standard mode with PostgreSQL on Dokploy:
 
 ### Step 1: Create a New Project
 
-Click on the **Create Project** button, give your project a name (e.g., "n8n-production"), and click **Create** to organize your n8n deployment.
+In Dokploy, navigate to **Projects** and click **Create Project**. Name it n8n-standard-production and click **Create**.
 
 ![Create Project](./assets/dokploy-creat-project-zenploy.png)
 
@@ -39,7 +39,7 @@ Click on **Create Service** to add a new service to your project. Select **Templ
 
 ### Step 3: Select n8n Template
 
-In the template list, select the "n8n with Postgres" template (the second option) to get started with a pre-configured setup including PostgreSQL database.
+In the template list, select the "n8n with Postgres" template (the second option) to get started with a pre-configured setup including PostgreSQL database. Click **Create** to proceed.
 
 ![Select n8n Template](./assets/dokploy-n8n-templatect-zenploy.png)
 
