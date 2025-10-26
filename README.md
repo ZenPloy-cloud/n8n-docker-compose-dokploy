@@ -4,7 +4,6 @@ Production-ready Docker Compose configurations for self-hosting n8n with Postgre
 
 <div align="center">
 
-![Dokploy](https://img.shields.io/badge/Dokploy-Optimized-000000?style=flat-square&logo=docker&logoColor=white&labelColor=000000&color=000000)
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![n8n](https://img.shields.io/badge/n8n-Automation-EA4B71?style=flat-square&logo=n8n&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-Queue-DC382D?style=flat-square&logo=redis&logoColor=white)
