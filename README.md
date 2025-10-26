@@ -260,7 +260,3 @@ For issues and questions:
 - [n8n Documentation](https://docs.n8n.io/)
 - [n8n Community Forum](https://community.n8n.io/)
 - [Dokploy Documentation](https://dokploy.com/docs)
-
-## License
-
-This configuration is provided as-is under the MIT License. n8n itself is licensed under the [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md).
