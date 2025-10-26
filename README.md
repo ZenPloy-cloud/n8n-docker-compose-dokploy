@@ -193,17 +193,46 @@ QUEUE_BULL_REDIS_DB=0
 --concurrency=10
 ```
 
-### Scaling Workers
+### Scaling Your Automation
 
-To add more workers, uncomment `n8n-worker-2` in the docker-compose file or duplicate the worker service:
+**Add More Workers**
+
+When workflows start queuing up, just add more workers to `docker-compose.yml`:
 
 ```yaml
-n8n-worker-3:
+# Add this to your docker-compose.yml services section
+n8n-worker-2:
   image: n8nio/n8n:1.116.2
   restart: unless-stopped
   command: worker --concurrency=10
-  # ... (same configuration as worker-1)
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+  environment:
+    - EXECUTIONS_MODE=queue
+    - DB_TYPE=postgresdb
+    - DB_POSTGRESDB_HOST=postgres
+    - DB_POSTGRESDB_PORT=5432
+    - DB_POSTGRESDB_DATABASE=${POSTGRES_DB}
+    - DB_POSTGRESDB_USER=${POSTGRES_USER}
+    - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+    - QUEUE_BULL_REDIS_HOST=redis
+    - QUEUE_BULL_REDIS_PORT=6379
+    - QUEUE_BULL_REDIS_DB=0
+    - QUEUE_BULL_REDIS_TIMEOUT_THRESHOLD=10000
+    - N8N_GRACEFUL_SHUTDOWN_TIMEOUT=30
+    - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+    - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+    - N8N_RUNNERS_ENABLED=true
+  volumes:
+    - n8n_data:/home/node/.n8n
 ```
+
+Then deploy to apply changes:
+1. Go to the **General** tab in Dokploy
+2. Click **Deploy** to restart with the new worker
 
 **Concurrency Recommendations:**
 - Set concurrency to **5-10** per worker
