@@ -53,14 +53,42 @@ Copy the contents of [`n8n-standard-with-postgres/docker-compose.yml`](https://g
 
 Go to the "Environment" tab and configure the required environment variables. Use the template from [`n8n-standard-postgres/dockploy-environment-settings.env`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/dockploy-environment-settings.env):
 
-**Required Variables:**
-- `N8N_HOST`: Your domain (e.g., n8n.yourdomain.com)
-- `N8N_PORT`: Port number (default: 5678)
-- `GENERIC_TIMEZONE`: Your timezone (e.g., Europe/Paris)
-- `N8N_ENCRYPTION_KEY`: Generate with `openssl rand -base64 32`
-- `POSTGRES_USER`: Database username (e.g., n8n)
-- `POSTGRES_PASSWORD`: Generate with `openssl rand -base64 64`
-- `POSTGRES_DB`: Database name (e.g., n8n)
+```bash
+# ---------------------------------------------------------------
+# N8N Settings
+# ---------------------------------------------------------------
+
+# The full domain name where your n8n instance will be accessible.
+# Example: n8n.your-domain.com
+N8N_HOST=n8n.example.com
+
+# The port on which n8n will listen. The default is 5678.
+N8N_PORT=5678
+
+# The timezone for scheduling workflows.
+# A list of valid timezones can be found here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+# Example: Europe/Paris, America/New_York
+GENERIC_TIMEZONE=Europe/Paris
+
+# The encryption key for credentials.
+# You can generate one with the following command: openssl rand -base64 32
+N8N_ENCRYPTION_KEY=CHANGEME_GENERATE_A_RANDOM_32_CHAR_KEY
+
+# ---------------------------------------------------------------
+# PostgreSQL Database Settings
+# ---------------------------------------------------------------
+
+# The username to connect to the PostgreSQL database.
+# Avoid using "root" or "admin". A good choice is "n8n".
+POSTGRES_USER=n8n
+
+# The password for the PostgreSQL user.
+# You can generate one with the following command: openssl rand -base64 64
+POSTGRES_PASSWORD=CHANGEME_SET_A_VERY_SECURE_PASSWORD
+
+# The name of the database that n8n will use.
+POSTGRES_DB=n8n
+```
 
 After entering all variables, click the "Save" button to save your configuration.
 
