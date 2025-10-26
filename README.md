@@ -204,8 +204,6 @@ n8n-worker-3:
 
 ⚠️ **Encryption Key**: All workers must use the **same** `N8N_ENCRYPTION_KEY` as the main instance to access credentials.
 
-⚠️ **Database**: Queue mode requires **PostgreSQL**. SQLite is not supported.
-
 ⚠️ **Binary Data**: If workflows use binary data, configure S3 external storage instead of filesystem.
 
 ### Monitoring Workers
