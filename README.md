@@ -45,7 +45,7 @@ In the template list, select the "n8n with Postgres" template (the second option
 
 ### Step 4: Configure Docker Compose
 
-Copy the contents of [`n8n-standard-with-postgres/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-with-postgres/docker-compose.yml) from this repository and paste it into the Docker Compose configuration field. Click the "Save" button at the bottom to save your configuration.
+Copy the contents of [`n8n-standard-with-postgres/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/docker-compose.yml) from this repository and paste it into the Docker Compose configuration field. Click the "Save" button at the bottom to save your configuration.
 
 ![Deploy Docker Compose](./assets/dokploy-deploy-docker-compose-zenploy.png)
 
