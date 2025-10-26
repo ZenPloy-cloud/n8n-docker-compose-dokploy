@@ -1,4 +1,4 @@
-# n8n for Dokploy ⚡ Standard & Queue Mode
+# n8n for Dokploy 🐋 Standard & Queue Mode
 
 Production-ready Docker Compose configurations for self-hosting n8n with PostgreSQL or Redis queue mode. Deploy in minutes with Dokploy's one-click setup.
 
