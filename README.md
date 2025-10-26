@@ -1,12 +1,16 @@
+<div align="center">
+
 # n8n for Dokploy ⚡ Standard & Queue Mode
 
 Production-ready Docker Compose configurations for self-hosting n8n with PostgreSQL or Redis queue mode. Deploy in minutes with Dokploy's one-click setup.
 
-![Dokploy](https://img.shields.io/badge/Dokploy-Optimized-00D9FF?style=for-the-badge&logo=docker&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![n8n](https://img.shields.io/badge/n8n-Automation%20w/%20Workers-EA4B71?style=for-the-badge&logo=n8n&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-Queue-DC382D?style=for-the-badge&logo=redis&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Dokploy](https://img.shields.io/badge/Dokploy-Optimized-00D9FF?style=flat-square&logo=docker&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat-square&logo=docker&logoColor=white)
+![n8n](https://img.shields.io/badge/n8n-Automation-EA4B71?style=flat-square&logo=n8n&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-Queue-DC382D?style=flat-square&logo=redis&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+
+</div>
 
 ## ✨ Features
 
