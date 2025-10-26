@@ -1,14 +1,15 @@
-# n8n Production Stack for Dokploy
+# n8n for Dokploy ⚡ Standard & Queue Mode
 
-A production-ready Docker Compose configuration to self-host n8n automation platform with PostgreSQL. Designed for easy deployment using Dokploy.
+Production-ready Docker Compose configurations for self-hosting n8n with PostgreSQL or Redis queue mode. Deploy in minutes with Dokploy's one-click setup.
 
-## Features
+## ✨ Features
 
-- **PostgreSQL Database**: Reliable data persistence with PostgreSQL 17
-- **Task Runners Enabled**: Isolated and secure workflow execution
-- **Production Ready**: Optimized environment variables and security settings
-- **Auto Cleanup**: Automatic pruning of old execution data (7 days retention)
-- **HTTPS Ready**: Pre-configured for secure connections with reverse proxy support
+- **🗄️ PostgreSQL 17**: Rock-solid data persistence for your workflows
+- **⚙️ Task Runners**: Isolated execution for enhanced security and performance
+- **🔒 Production Hardened**: Pre-configured security settings and encryption
+- **🧹 Auto Cleanup**: Smart pruning of execution history (7-day retention)
+- **🌐 HTTPS Ready**: SSL/TLS support with automatic certificate management
+- **📊 Queue Mode Available**: Scale horizontally with Redis-backed workers
 
 ## Quick Start with Dokploy
 
@@ -40,7 +41,7 @@ Copy the contents of `n8n-standard-with-postgres/docker-compose.yml` from this r
 
 ### Step 5: Set Environment Variables
 
-Configure the required environment variables. Use the template from `n8n-standard-with-postgres/dockploy-environment-settings.env`:
+Go to the "Environment" tab and configure the required environment variables. Use the template from `n8n-standard-with-postgres/dockploy-environment-settings.env`:
 
 **Required Variables:**
 - `N8N_HOST`: Your domain (e.g., n8n.yourdomain.com)
