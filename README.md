@@ -254,9 +254,101 @@ Two Docker volumes ensure data persistence:
 
 Execution data older than 7 days (168 hours) is automatically pruned to save storage space.
 
+---
+
+## 🚀 Queue Mode Deployment (Advanced)
+
+Queue mode provides horizontal scalability for high-volume workflow executions using Redis as a message broker and multiple worker instances.
+
+### When to Use Queue Mode
+
+Use queue mode when you need:
+- **High throughput**: Process hundreds or thousands of workflows simultaneously
+- **Horizontal scaling**: Add/remove workers based on workload
+- **Better resource isolation**: Separate UI/webhooks from workflow execution
+- **Improved reliability**: Workers can be restarted without affecting the main instance
+
+### Architecture Overview
+
+```
+┌─────────────┐     ┌─────────┐     ┌──────────┐
+│   n8n Main  │────▶│  Redis  │────▶│ Worker 1 │
+│ (UI/Webhooks)│     │ (Queue) │     └──────────┘
+└─────────────┘     └─────────┘     ┌──────────┐
+                                    │ Worker 2 │
+                                    └──────────┘
+```
+
+### Quick Start with Queue Mode
+
+Follow the same steps as Standard Mode, but use the Queue Mode configuration files:
+
+1. **Use Queue Mode Docker Compose**: [`n8n-queue-mode-redis/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-queue-mode-redis/docker-compose.yml)
+2. **Use Queue Mode Environment**: [`n8n-queue-mode-redis/dockploy-environment-settings.env`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-queue-mode-redis/dockploy-environment-settings.env)
+
+### Queue Mode Configuration
+
+The queue mode setup includes:
+
+**Services:**
+- **postgres**: PostgreSQL 17 database
+- **redis**: Redis 8 message broker
+- **n8n-main**: Main instance (UI, webhooks, triggers)
+- **n8n-worker-1**: Worker instance (executes workflows)
+- **n8n-worker-2**: Optional second worker (commented out by default)
+
+**Key Environment Variables:**
+```bash
+# Enable queue mode
+EXECUTIONS_MODE=queue
+
+# Redis configuration
+QUEUE_BULL_REDIS_HOST=redis
+QUEUE_BULL_REDIS_PORT=6379
+QUEUE_BULL_REDIS_DB=0
+
+# Worker concurrency (workflows per worker)
+--concurrency=10
+```
+
+### Scaling Workers
+
+To add more workers, uncomment `n8n-worker-2` in the docker-compose file or duplicate the worker service:
+
+```yaml
+n8n-worker-3:
+  image: n8nio/n8n:1.116.2
+  restart: unless-stopped
+  command: worker --concurrency=10
+  # ... (same configuration as worker-1)
+```
+
+**Concurrency Recommendations:**
+- Set concurrency to **5-10** per worker
+- Avoid low concurrency with many workers (exhausts database connections)
+- Monitor worker performance and adjust accordingly
+
+### Important Notes
+
+⚠️ **Encryption Key**: All workers must use the **same** `N8N_ENCRYPTION_KEY` as the main instance to access credentials.
+
+⚠️ **Database**: Queue mode requires **PostgreSQL**. SQLite is not supported.
+
+⚠️ **Binary Data**: If workflows use binary data, configure S3 external storage instead of filesystem.
+
+### Monitoring Workers
+
+Workers expose health check endpoints (when `QUEUE_HEALTH_CHECK_ACTIVE` is enabled):
+- `/healthz`: Worker status
+- `/healthz/readiness`: DB and Redis connection status
+- `/metrics`: Performance metrics
+
+---
+
 ## Support
 
 For issues and questions:
 - [n8n Documentation](https://docs.n8n.io/)
 - [n8n Community Forum](https://community.n8n.io/)
+- [Dokploy Documentation](https://dokploy.com/docs)
 - [Dokploy Documentation](https://dokploy.com/docs)
