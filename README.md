@@ -114,32 +114,34 @@ Visit your domain (e.g., https://n8n.yourdomain.com) and create your owner accou
 
 ![Set Up Owner Account](./assets/n8n-set-up-owner-account.png)
 
-## Configuration Details
+## 🔧 What's Under the Hood?
 
-### Docker Compose Structure
+### 📦 What Gets Installed
 
-The setup includes two services:
+Your n8n setup includes:
+- **PostgreSQL 17** - Your workflow database (with automatic health checks)
+- **n8n 1.116.2** - The automation engine (with task runners for better security)
 
-- **postgres**: PostgreSQL 17 database with health checks
-- **n8n**: n8n application (version 1.116.2) with task runners enabled
+### 🔒 Security Built-In
 
-### Security Features
+We've got you covered:
+- 🔐 **Encrypted Credentials** - All your API keys and passwords are encrypted with `N8N_ENCRYPTION_KEY`
+- 🍪 **Secure Cookies** - HTTPS-only cookies for your sessions
+- 📁 **Protected Files** - Strict permissions on configuration files
+- 🛡️ **Git Protection** - Prevents bare repository exploits
+- 🔄 **Proxy Ready** - Works seamlessly behind reverse proxies
 
-- Encrypted credentials with `N8N_ENCRYPTION_KEY`
-- Secure cookies enabled
-- Strict file permissions enforcement
-- Git node bare repository protection
-- Reverse proxy trust configuration
+### 💾 Your Data is Safe
 
-### Data Persistence
+Everything important is stored in Docker volumes:
+- `postgres_data` - All your workflow definitions and execution history
+- `n8n_data` - Your credentials, settings, and configurations
 
-Two Docker volumes ensure data persistence:
-- `postgres_data`: Database storage
-- `n8n_data`: n8n workflows and credentials
+**Even if you delete the containers, your data stays safe!**
 
-### Automatic Cleanup
+### 🧹 Auto-Cleanup
 
-Execution data older than 7 days (168 hours) is automatically pruned to save storage space.
+To keep things tidy, n8n automatically deletes execution logs older than 7 days. Your workflows and credentials are never touched - only the execution history gets cleaned up.
 
 ---
 
