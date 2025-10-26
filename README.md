@@ -4,12 +4,12 @@ Production-ready Docker Compose configurations for self-hosting n8n with Postgre
 
 ## ✨ Features
 
-- PostgreSQL 17: Rock-solid data persistence for your workflows
-- Task Runners: Isolated execution for enhanced security and performance
-- Production Hardened: Pre-configured security settings and encryption
-- Auto Cleanup: Smart pruning of execution history (7-day retention)
-- HTTPS Ready: SSL/TLS support with automatic certificate management
-- Queue Mode Available: Scale horizontally with Redis-backed workers
+- **PostgreSQL 17**: Rock-solid data persistence for your workflows
+- **Task Runners**: Isolated execution for enhanced security and performance
+- **Production Hardened**: Pre-configured security settings and encryption
+- **Auto Cleanup**: Smart pruning of execution history (7-day retention)
+- **HTTPS Ready**: SSL/TLS support with automatic certificate management
+- **Queue Mode Available**: Scale horizontally with Redis-backed workers
 
 ## 📋 Prerequisites
 
