@@ -21,7 +21,7 @@ curl -sSL https://dokploy.com/install.sh | sh
 
 For detailed installation instructions, visit the [Dokploy Installation Guide](https://docs.dokploy.com/docs/core/installation).
 
-## 🚀 Quick Start with Dokploy (Standard Mode)
+## Quick Start with Dokploy (Standard Mode)
 
 Follow these steps to deploy n8n in standard mode with PostgreSQL on Dokploy:
 
