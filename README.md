@@ -40,72 +40,77 @@ curl -sSL https://dokploy.com/install.sh | sh
 
 For detailed installation instructions, visit the [Dokploy Installation Guide](https://docs.dokploy.com/docs/core/installation).
 
-## 🚀 Quick Start with Dokploy (Standard Mode)
+## 🚀 Deploy n8n in 10 Minutes (Standard Mode)
 
-Follow these steps to deploy n8n in standard mode with PostgreSQL on Dokploy:
+Perfect for most use cases. Let's get you up and running!
 
-### Step 1: Create a New Project
+### Step 1: Create Your Project
 
-In Dokploy, navigate to **Projects** and click **Create Project**. Name it n8n-standard-production and click **Create**.
+Click **Create Project** in Dokploy, give it a name (like "n8n-production"), and hit **Create**.
 
 ![Create Project](./assets/dokploy-creat-project-zenploy.png)
 
-### Step 2: Create a New Service
+### Step 2: Add a Service
 
-Click on **Create Service** to add a new service to your project. Select **Template** from the list of options.
+Click **Create Service** → Select **Template** from the options.
 
 ![Create Service](./assets/dokploy-creat-service-zenploy.png)
 
-### Step 3: Select n8n Template
+### Step 3: Pick the n8n Template
 
-In the template list, select the "n8n with Postgres" template (the second option) to get started with a pre-configured setup including PostgreSQL database. Click **Create** to proceed.
+Choose **"n8n with Postgres"** (the 2nd option) → Click **Create**.
 
 ![Select n8n Template](./assets/dokploy-n8n-templatect-zenploy.png)
 
-### Step 4: Configure Docker Compose
+### Step 4: Paste the Docker Config
 
-Copy the contents of [`n8n-standard-postgres/docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/docker-compose.yml) and paste it into the **Compose File** field. Click **Save** at the bottom to save your configuration.
+Copy [`this docker-compose.yml`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/docker-compose.yml) → Paste into **Compose File** → Click **Save**.
 
 ![Deploy Docker Compose](./assets/dokploy-deploy-docker-compose-zenploy.png)
 
-### Step 5: Set Environment Variables
+### Step 5: Set Your Environment Variables
 
-Go to the **Environment** tab and copy the template from [`n8n-standard-postgres/dockploy-environment-settings.env`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/dockploy-environment-settings.env) into the **Environment Settings** field:
+Go to **Environment** tab → Copy [`these settings`](https://github.com/ZenPloy-cloud/n8n-docker-compose-dokploy/blob/main/n8n-standard-postgres/dockploy-environment-settings.env) → Paste into **Environment Settings**.
+
+**Important:** Change these values:
+- `N8N_HOST` → Your domain (e.g., n8n.yourdomain.com)
+- `N8N_ENCRYPTION_KEY` → Generate with: `openssl rand -base64 32`
+- `POSTGRES_PASSWORD` → Generate with: `openssl rand -base64 64`
+
+Click **Save** when done.
 
 ![Environment Settings](./assets/dokploy-environment-settings-zenploy.png)
 
-After entering all variables, click the **Save** button to save your configuration.
+### Step 6: First Deploy
 
-### Step 6: Deploy the Application
-
-Go back to the **General** tab and click the **Deploy** button to start the initial deployment.
+Go to **General** tab → Click **Deploy** to start.
 
 ![Deploy](./assets/dokploy-deploy-zenploy.png)
 
-### Step 7: Check Deployment Details
+### Step 7: Watch It Build
 
-Monitor the deployment logs to ensure everything is running correctly.
+Check the logs to make sure everything's working. You'll see PostgreSQL and n8n starting up.
 
 ![Deployment Details](./assets/dokploy-deployment-details-zenploy.png)
 
-### Step 8: Configure Domain
+### Step 8: Set Up Your Domain
 
-1. Go to the **Domains** tab
-2. Modify the default domain to match your `N8N_HOST` value (e.g., n8n.yourdomain.com)
-3. Enable HTTPS and select **Let's Encrypt** for automatic SSL
+1. Go to **Domains** tab
+2. Change the domain to match your `N8N_HOST` (e.g., n8n.yourdomain.com)
+3. Toggle **HTTPS** on → Select **Let's Encrypt**
 4. Click **Update**
 
 ![Domain Configuration](./assets/dokploy-domains-zenploy.png)
 
-### Step 9: Deploy Again
+### Step 9: Deploy Again (Final Time!)
 
-After updating the domain, click **Deploy** one more time to apply the changes.
+Go back to **General** → Click **Deploy** to apply the domain changes.
 
 ![Deploy](./assets/dokploy-deploy-zenploy.png)
 
-### Step 10: Set Up n8n Owner Account
+### Step 10: Create Your Account 🎉
 
-Access your n8n instance at your configured domain and create the owner account. You're all set!
+Visit your domain (e.g., https://n8n.yourdomain.com) and create your owner account. You're live!
 
 ![Set Up Owner Account](./assets/n8n-set-up-owner-account.png)
 
