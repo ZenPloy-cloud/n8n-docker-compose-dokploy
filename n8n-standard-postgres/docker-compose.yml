@@ -37,7 +37,7 @@ services:
   # Service for the n8n application
   n8n:
     # Uses a specific version of the n8n image to ensure stability.
-    image: n8nio/n8n:1.116.2
+    image: n8nio/n8n:1.117.3
     # Restart policy: the container will restart automatically unless it is manually stopped.
     restart: unless-stopped
     # Makes the startup of n8n dependent on the health status of PostgreSQL.
